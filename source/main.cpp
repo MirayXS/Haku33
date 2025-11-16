@@ -237,6 +237,21 @@ int main(int argc, char **argv)
 	} else {
 		verM = (int)ver.major;
 	}
+    //main menu
+    consoleClear();
+    printf("\x1b[32;1m*\x1b[0m %s v%s Kronos2308, Hard Reset \n\n",TITLE, VERSION);
+    printf(LG["WARNING1"]);
+    printf(LG["WARNING2"]);
+    printf(LG["WARNING3"]);
+    printf(LG["MESSAGE1"]);
+    if (is_patched){
+        printf("\n\n %s",LG["INFO0"]);
+    } 
+    printf("\n\x1b[31;1m%s \x1b[0m ",Logs);
+    if (!keysok){
+        printf(LG["ERROR1"]);
+    }
+    printf(LG["PROMPT1"]);
 
 	//keys
 	while (appletMainLoop())
@@ -268,28 +283,11 @@ int main(int argc, char **argv)
 			LT = 2;
 			RT = 2;
 		}
+        if (sure){
+            printf(LG["CONFIRM1"]);
+        }
+        consoleUpdate(NULL);
 
-		//main menu
-		consoleClear();
-			printf("\x1b[32;1m*\x1b[0m %s v%s Kronos2308, Hard Reset \n\n",TITLE, VERSION);
-			printf(LG["WARNING1"]);
-			printf(LG["WARNING2"]);
-			printf(LG["WARNING3"]);
-			printf(LG["MESSAGE1"]);
-			if (is_patched){
-				printf("\n\n %s",LG["INFO0"]);
-			} 
-			printf("\n\x1b[31;1m%s \x1b[0m ",Logs);
-            if (!keysok){
-                printf(LG["ERROR1"]);
-            }
-			printf(LG["PROMPT1"]);
-            if (sure){
-                printf(LG["CONFIRM1"]);
-            }
-
-
-		consoleUpdate(NULL);
         
 		if (kDown & KEY_Y || kDown & KEY_X){
             SetupClean();
